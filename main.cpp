@@ -38,6 +38,18 @@ public:
         return p == pin;
     }
 
+    void changePin() {
+        string oldPin, newPin;
+        cout << "Enter old PIN: "; cin >> oldPin;
+        if (oldPin == pin) {
+            cout << "Enter new 4-digit PIN: "; cin >> newPin;
+            pin = newPin;
+            cout << "PIN changed successfully.\n";
+        } else {
+            cout << "Incorrect old PIN.\n";
+        }
+    }
+
     void deposit(long long amt) {
         balance += amt;
         history.push_back({ time(nullptr), "Deposit", amt });
@@ -219,9 +231,21 @@ public:
         if (acc) acc->showHistory();
     }
 
+    void changePin() {
+        auto acc = getAccount();
+        if (acc) acc->changePin();
+    }
+
     void monthlyUpdate() {
         for (auto& entry : accounts) entry.second->monthlyUpdate();
         cout << "Monthly update complete.\n";
+    }
+
+    void showAllAccounts() {
+        for (auto& entry : accounts) {
+            entry.second->showAccount();
+            cout << "---------------------\n";
+        }
     }
 };
 
@@ -230,8 +254,8 @@ int main() {
     bank.load();
     int ch;
     do {
-        cout << "\n==== BANK MENU ====";
-        cout << "\n1. Create Account\n2. Deposit\n3. Withdraw\n4. View Account\n5. View History\n6. Monthly Update\n7. Exit\nChoice: ";
+        cout << "\n==== BANK MENU ====\n";
+        cout << "1. Create Account\n2. Deposit\n3. Withdraw\n4. View Account\n5. View History\n6. Change PIN\n7. Monthly Update\n8. View All Accounts\n9. Exit\nChoice: ";
         cin >> ch;
         switch (ch) {
             case 1: bank.createAccount(); break;
@@ -239,11 +263,13 @@ int main() {
             case 3: bank.withdraw(); break;
             case 4: bank.showAccount(); break;
             case 5: bank.showHistory(); break;
-            case 6: bank.monthlyUpdate(); break;
-            case 7: bank.save(); cout << "Goodbye!\n"; break;
+            case 6: bank.changePin(); break;
+            case 7: bank.monthlyUpdate(); break;
+            case 8: bank.showAllAccounts(); break;
+            case 9: bank.save(); cout << "Goodbye!\n"; break;
             default: cout << "Invalid option.\n";
         }
-    } while (ch != 7);
+    } while (ch != 9);
 
     return 0;
 }
