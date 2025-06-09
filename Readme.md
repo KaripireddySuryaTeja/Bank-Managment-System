@@ -83,5 +83,7 @@ A menu option applies:
 ---
 
 ## 👤 Author
-Karipireddy Surya Teja Gopal Reddy
-National Institute of Technology Meghalaya
+**Karipireddy Surya Teja Gopal Reddy**  
+Dept. of Computer Science and Engineering,
+National Institute of Technology Meghalaya  
+Contact: karipireddysuryateja@gmail.com
