@@ -1,6 +1,3 @@
-
-==========
-
 # 🏦 Advanced Bank Management System (C++)
 
 This is a C++ console-based bank management system that uses **Object-Oriented Programming (OOP)** principles, including **Inheritance**, **Encapsulation**, and **Polymorphism**. It features persistent data storage and basic PIN-based security.
